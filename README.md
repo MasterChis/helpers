@@ -14,3 +14,25 @@ Asegúrate de configurar correctamente la cadena de conexión en tu archivo `app
 ```cmd
 dotnet ef dbcontext scaffold "Server=MASTERCHIS\SQLEXPRESS;Database=Kikis_DB;Integrated Security=True;TrustServerCertificate=True" Microsoft.EntityFrameworkCore.SqlServer -o Data
 ```
+
+## Generar token aleatorio (C#)
+```cmd
+public static string GenerateRandomString(int length) {
+    
+    string validChars = 
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ" +
+        "abcdefghijklmnopqrstuvwxyz" +
+        "0123456789";
+
+    Random random = new Random();
+    StringBuilder password = new StringBuilder();
+
+    for (int i = 0; i < length; i++) {
+        int index = random.Next(validChars.Length);
+
+        password.Append(validChars[index]);
+    }
+
+    return password.ToString();
+}
+```
